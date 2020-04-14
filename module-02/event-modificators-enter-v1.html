@@ -1,0 +1,37 @@
+<script src="https://unpkg.com/vue"></script>
+
+
+
+<div id="app">
+  <p> {{ result }} </p>
+  <button v-on:click="add(5, $event)" >Add</button>
+  <p v-on:mousemove="viewXY">Mouse: {{ x }} {{ y }}</p>
+  <input type="text" v-on:keyup.enter="showAlert">
+</div>
+
+<script>
+
+  new Vue({
+    el: "#app",
+    data: {
+      result: 0,
+      x: 0,
+      y: 0,
+      numText: 0
+    },
+    methods: {
+       add(num, e) {
+        this.result += num
+        console.log(e)
+       },
+       viewXY(e) {
+         this.x = e.clientX
+         this.y = e.clientY
+       },
+       showAlert() {
+         alert('Ok - You pressed enter')
+       }
+    },
+  })
+
+</script>

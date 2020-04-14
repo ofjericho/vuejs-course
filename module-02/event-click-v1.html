@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/vue"></script>
+
+
+<div id="app">
+  <p> {{ result }} </p>
+  <button v-on:click="add_1" >Add 1</button>
+</div>
+
+<script>
+
+  new Vue({
+    el: "#app",
+    data: {
+      result: 0
+    },
+    methods: {
+       add_1() {
+        this.result++
+       } 
+    },
+  })
+
+</script>

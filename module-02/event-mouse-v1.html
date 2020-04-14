@@ -1,0 +1,30 @@
+<script src="https://unpkg.com/vue"></script>
+
+
+<div id="app">
+  <p> {{ result }} </p>
+  <button v-on:click="add_1" >Add 1</button>
+  <p v-on:mousemove="viewXY">Mouse: {{ x }} {{ y }}</p>
+</div>
+
+<script>
+
+  new Vue({
+    el: "#app",
+    data: {
+      result: 0,
+      x: 0,
+      y: 0
+    },
+    methods: {
+       add_1() {
+        this.result++
+       },
+       viewXY(e) {
+         this.x = e.clientX
+         this.y = e.clientY
+       }
+    },
+  })
+
+</script>
