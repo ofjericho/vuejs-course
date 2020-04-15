@@ -1,0 +1,68 @@
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  <button v-on:click="add_on_method">Add</button>
+
+  <button v-on:click="counter_computed++">Add Computed</button>
+  
+  <button v-on:click="subtract_on_method">Subtract</button>
+
+  <button v-on:click="counter_computed--">Subtract Computed</button>
+
+  <p>Count: {{ counter_methods }}  |  {{ counter_computed }}</p>
+
+  <!-- when you use computed methods, you don`t use '()' for calling -->
+   <p>Result: {{ result_methods() }}  |  {{ result_computed }}</p>  
+  
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter_methods: 0,
+      counter_computed: 0
+    },
+    computed: {
+      result_computed() {
+        console.log('calling for computed')
+        return this.counter_computed >= 5 ?
+           'Result Computed : bigger ou equal than 5' : 'Result Computed : less than 5'
+      }
+    },
+    watch: {
+
+      // to monitor a properties's actions 
+
+      counter_computed(newer, older) {
+
+        console.log(newer, older)
+
+        setTimeout(() => {
+
+          this.counter_computed = 0
+          
+        }, 2000);
+        
+      }
+
+    },
+    methods: {
+      add_on_method() {
+        console.log('method')
+        this.counter_methods++
+
+      },
+      subtract_on_method() {
+        this.counter_methods--
+      },
+      result_methods() {
+        console.log('calling for methods')
+        return this.counter_methods >= 5 ?
+           'Result Methods : bigger ou equal than 5' : 'Result Methods : less than 5'
+      }
+    }
+  })
+
+
+</script>
