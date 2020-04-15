@@ -1,0 +1,72 @@
+<script src="https://unpkg.com/vue"></script>
+
+<style>
+
+  .boxes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+  }
+
+  .c1 {
+    background-color: green;
+  }
+
+  .c2 {
+    background-color: red;
+  }
+
+  .c3 {
+    background-color: royalblue;
+  }
+
+
+</style>
+
+<div id="app">
+
+  <div class="boxes">
+    <div class="box" :class="style1" @click = "applyC1 = !applyC1"></div>
+    <div class="box"></div>
+    <div class="box" :style="styleRotate"></div>
+</div>
+
+<hr>
+
+<button @click="styleRotate">rotate</button> 
+
+</div>
+
+<script>
+
+  new Vue({
+    el: '#app',
+    data: {
+      applyC1: false,
+      classCSS: 'c1',
+      degree: degree += 45
+    },
+    computed: {
+      style1() {
+        return {
+          c1: this.applyC1,
+          c2: !this.applyC1
+        }
+      },
+      styleRotate() {
+        return {
+          transform: rotate(this.degree)
+        }
+      }
+      
+    },
+  })
+
+</script>
